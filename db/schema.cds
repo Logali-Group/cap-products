@@ -123,4 +123,65 @@ entity SalesData {
     key ID           : UUID;
         DeliveryDate : DateTime;
         Revenue      : Decimal(16, 2);
+};
+
+entity SelProducts   as select from Products;
+
+entity SelProducts1  as
+    select from Products {
+        *
+    };
+
+entity SelProducts2  as
+    select from Products {
+        Name,
+        Price,
+        Quantity
+    };
+
+entity SelProducts3  as
+    select from Products
+    left join ProductReview
+        on Products.Name = ProductReview.Name
+    {
+        Rating,
+        Products.Name,
+        sum(
+            Price
+        ) as TotalPrice
+    }
+    group by
+        Rating,
+        Products.Name
+    order by
+        Rating;
+
+entity ProjProducts  as projection on Products;
+
+entity ProjProducts2 as projection on Products {
+    *
+};
+
+entity ProjProducts3 as projection on Products {
+    ReleaseDate, Name
+};
+
+// entity ParamProducts(pName : String)     as
+//     select from Products {
+//         Name,
+//         Price,
+//         Quantity
+//     }
+//     where
+//         Name = : pName;
+
+// entity ProjParamProducts(pName : String) as projection on Products where Name = : pName;
+
+extend Products with {
+    PriceCondition: String(2);
+    PriceDetermination: String(3);
+};
+
+extend entity Products with actions {
+  function getRatings() returns Integer;
 }
