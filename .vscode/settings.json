@@ -13,5 +13,12 @@
     "eslint.options": {
         "configFile": "/extbin/npm/globals/lib/node_modules/@sap/cds-dk/lib/lint/.eslintrc.js"
     },
-    "actions": []
+    "actions": [],
+    "sqltools.connections": [
+        {
+            "dialect": "SQLite",
+            "name": "myConn",
+            "database": "db/products.db"
+        }
+    ]
 }
