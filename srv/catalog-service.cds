@@ -108,5 +108,4 @@ define service CatalogService {
             ID          as Code,
             Description as Text
         };
-
 }
