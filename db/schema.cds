@@ -161,3 +161,43 @@ context sales {
         DeliveryMonth : Association to sales.Months;
     };
 }
+
+context reports {
+
+    entity AverageRating as
+        select from logali.materials.ProductReview {
+            Product.ID as ProductId,
+            avg(
+                Rating
+            )          as AverageRating : Decimal(16, 2)
+        }
+        group by
+            Product.ID;
+
+    entity Products      as
+        select from logali.materials.Products
+        mixin {
+            ToStockAvailibilty : Association to logali.materials.StockAvailability
+                                     on ToStockAvailibilty.ID = $projection.StockAvailability;
+            ToAverageRating    : Association to AverageRating
+                                     on ToAverageRating.ProductId = ID;
+        }
+
+        into {
+            *,
+            ToAverageRating.AverageRating as Rating,
+            case
+                when
+                    Quantity >= 8
+                then
+                    3
+                when
+                    Quantity > 0
+                then
+                    2
+                else
+                    1
+            end                           as StockAvailability : Integer,
+            ToStockAvailibilty
+        }
+}

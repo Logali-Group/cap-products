@@ -1,8 +1,6 @@
 namespace com.training;
 
-using {
-    cuid
-} from '@sap/cds/common';
+using {cuid} from '@sap/cds/common';
 
 entity Course : cuid {
     Student : Association to many StudentCourse
@@ -76,4 +74,3 @@ entity StudentCourse : cuid {
 //         Name = : pName;
 
 // entity ProjParamProducts(pName : String) as projection on Products where Name = : pName;
-
