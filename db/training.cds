@@ -17,6 +17,15 @@ entity StudentCourse : cuid {
     Course  : Association to Course;
 }
 
+entity Orders {
+    key ClientEmail : String(65);
+        FirstName   : String(30);
+        LastName    : String(30);
+        CreatedOn   : Date;
+        Reviewed    : Boolean;
+        Approved    : Boolean;
+}
+
 // type EmailsAddresses_01 : many {
 //     kind  : String;
 //     email : String;
