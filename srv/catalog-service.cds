@@ -125,7 +125,7 @@ define service MyService {
     entity SuppliersProduct as
         select from logali.materials.Products[Name = 'Bread'
     ]{
-        *,
+        * ,
         Name,
         Description,
         Supplier.Address
@@ -174,4 +174,4 @@ define service Reports {
         }
         where
             exists Supplier[Name = 'Exotic Liquids'];
-}
+};

@@ -2,6 +2,11 @@ const cds = require("@sap/cds");
 const { Orders } = cds.entities("com.training");
 
 module.exports = (srv) => {
+  srv.before("*", (req) => {
+    console.log(`Method: ${req.method}`);
+    console.log(`Target: ${req.target}`);
+  });
+
   //************READ******/
   srv.on("READ", "Orders", async (req) => {
     if (req.data.ClientEmail !== undefined) {
@@ -101,5 +106,59 @@ module.exports = (srv) => {
       });
     console.log("Before End", returnData);
     return await returnData;
+  });
+
+  //************FUNCTION******/
+  srv.on("getClientTaxRate", async (req) => {
+    //NO server side-effect
+    const { clientEmail } = req.data;
+    const db = srv.transaction(req);
+
+    const results = await db
+      .read(Orders, ["Country_code"])
+      .where({ ClientEmail: clientEmail });
+
+    console.log(results[0]);
+
+    switch (results[0].Country_code) {
+      case "ES":
+        return 21.5;
+      case "UK":
+        return 24.6;
+      default:
+        break;
+    }
+  });
+
+  //************ACTION******/
+  srv.on("cancelOrder", async (req) => {
+    const { clientEmail } = req.data;
+    const db = srv.transaction(req);
+
+    const resultsRead = await db
+      .read(Orders, ["FirstName", "LastName", "Approved"])
+      .where({ ClientEmail: clientEmail });
+
+    let returnOrder = {
+      status: "",
+      message: "",
+    };
+
+    console.log(clientEmail);
+    console.log(resultsRead);
+
+    if (resultsRead[0].Approved == false) {
+      const resultsUpdate = await db
+        .update(Orders)
+        .set({ Status: "C" })
+        .where({ ClientEmail: clientEmail });
+      returnOrder.status = "Succeeded";
+      returnOrder.message = `The Order placed by ${resultsRead[0].FirstName} ${resultsRead[0].LastName} was canceled`;
+    } else {
+      returnOrder.status = "Failed";
+      returnOrder.message = `The Order placed by ${resultsRead[0].FirstName} ${resultsRead[0].LastName} was NOT canceled becouse was already approved`;
+    }
+    console.log("Action cencelOrder executed");
+    return returnOrder;
   });
 };
