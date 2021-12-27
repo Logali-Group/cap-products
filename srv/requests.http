@@ -44,3 +44,6 @@ POST http://localhost:4004/manage-orders/Orders('client1@client1.com')/ManageOrd
 Content-Type: application/json
 
 {"clientEmail" : "client2@client2.com"}
+
+### Get Incidents
+GET http://localhost:4004/sapbackend-exit/Incidents

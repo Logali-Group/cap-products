@@ -19,5 +19,6 @@
             "name": "myConn",
             "database": "db/products.db"
         }
-    ]
+    ],
+    "[xml].editor.defaultFormatter": "dotjoshjohnson.xml"
 }
