@@ -5,6 +5,9 @@ module.exports = (srv) => {
   srv.before("*", (req) => {
     console.log(`Method: ${req.method}`);
     console.log(`Target: ${req.target}`);
+    /****NOT YET RECORDER */
+    // console.log(req.user);
+	// console.log(req.user.is('authenticated-user'));
   });
 
   //************READ******/

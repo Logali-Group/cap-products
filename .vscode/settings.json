@@ -13,12 +13,10 @@
     "eslint.options": {
         "configFile": "/extbin/npm/globals/lib/node_modules/@sap/cds-dk/lib/lint/.eslintrc.js"
     },
-    "sqltools.connections": [
-        {
-            "dialect": "SQLite",
-            "name": "myConn",
-            "database": "db/products.db"
-        }
-    ],
-    "[xml].editor.defaultFormatter": "dotjoshjohnson.xml"
+    "sqltools.connections": [],
+    "[xml].editor.defaultFormatter": "dotjoshjohnson.xml",
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true
+    }
 }

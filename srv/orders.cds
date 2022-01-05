@@ -1,5 +1,8 @@
 using com.training as training from '../db/training';
 
+/****NOT YET RECORDER */
+// @path: '/Orders'
+// @requires : 'authenticated-user'
 service ManageOrders {
 
     type cancelOrderReturn {

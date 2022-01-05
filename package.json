@@ -13,10 +13,15 @@
     "dotenv": "^10.0.0",
     "express": "^4",
     "express-graphql": "^0.12.0",
-    "graphql": "^16.2.0"
+    "graphql": "^16.2.0",
+    "passport": "^0.5.2"
   },
   "devDependencies": {
+    "@sap/eslint-plugin-ui5-jsdocs": "^2.0.5",
+    "@sap/ux-specification": "^1.96.0",
+    "@sapui5/ts-types": "^1.92.2",
     "cds-swagger-ui-express": "^0.3.0",
+    "eslint": "^7.32.0",
     "sqlite3": "^5.0.2"
   },
   "scripts": {
@@ -48,6 +53,14 @@
     }
   },
   "cds": {
+    "i18n": {
+      "default_language": "es",
+      "folders": [
+        "_i18n",
+        "i18n",
+        "assets/i18n"
+      ]
+    },
     "features": {
       "graphql": true
     },
@@ -62,5 +75,9 @@
         }
       }
     }
-  }
+  },
+  "sapux": [
+    "app/product",
+    "app/product"
+  ]
 }
