@@ -1,0 +1,95 @@
+{
+  "name": "cap-products",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@graphql-tools/schema": "^8.3.1",
+    "@sap/cds": "^5",
+    "express": "^4",
+    "hdb": "^0.18.3",
+    "@sap/cds-odata-v2-adapter-proxy": "^1.8.4",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express-graphql": "^0.12.0",
+    "graphql": "^16.2.0"
+  },
+  "devDependencies": {
+    "@sap/eslint-plugin-ui5-jsdocs": "^2.0.5",
+    "@sap/ux-specification": "^1.96.0",
+    "@sapui5/ts-types": "^1.92.2",
+    "cds-swagger-ui-express": "^0.3.0",
+    "eslint": "^7.32.0",
+    "sqlite3": "^5.0.2"
+  },
+  "scripts": {
+    "start": "cds run"
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "env": {
+      "es2020": true,
+      "node": true,
+      "jest": true,
+      "mocha": true
+    },
+    "globals": {
+      "SELECT": true,
+      "INSERT": true,
+      "UPDATE": true,
+      "DELETE": true,
+      "CREATE": true,
+      "DROP": true,
+      "CDL": true,
+      "CQL": true,
+      "CXL": true,
+      "cds": true
+    },
+    "rules": {
+      "no-console": "off",
+      "require-atomic-updates": "off"
+    }
+  },
+  "cds": {
+    "i18n": {
+      "default_language": "es",
+      "folders": [
+        "_i18n",
+        "i18n",
+        "assets/i18n"
+      ]
+    },
+    "features": {
+      "graphql": true
+    },
+    "requires": {
+      "db": {
+        "kind": "hana"
+      },
+      "sapbackend": {
+        "kind": "odata-v2",
+        "model": "srv/external/sapbackend",
+        "[development]": {
+          "credentials": {
+            "requestTimeout": 30000,
+            "url": "http://erp13.sap4practice.com:9037/sap/opu/odata/sap/YSAPUI5_SRV_01",
+            "authentication": "NoAuthentication"
+          }
+        },
+        "[production]": {
+          "credentials": {
+            "destination": "NPL_Backend"
+          }
+        }
+      }
+    },
+    "hana": {
+      "deploy-format": "hdbtable"
+    }
+  },
+  "sapux": [
+    "app/product"
+  ]
+}

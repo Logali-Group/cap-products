@@ -1,0 +1,49 @@
+### Get Orders
+GET http://localhost:4004/manage-orders/Orders
+
+### Get Order
+GET http://localhost:4004/manage-orders/Orders('client1@client1.com')
+
+### Create Order
+POST http://localhost:4004/manage-orders/Orders HTTP/1.1
+Content-Type: application/json
+
+{
+    "ClientEmail": "client5@client5.com",
+    "FirstName": "Lorena",
+    "LastName": "Garcia",
+    "CreatedOn" : "2024-10-10"
+}
+
+### Update Order
+PUT http://localhost:4004/manage-orders/Orders('client1@client1.com') HTTP/1.1
+Content-Type: application/json
+
+{
+    "FirstName": "FirstName Updated",
+    "LastName": "LastName Updated"
+}
+
+###Delete Order
+DELETE http://localhost:4004/manage-orders/Orders('client5@client5.com')
+
+### Get Customer Rate - Function
+GET http://localhost:4004/manage-orders/getClientTaxRate(clientEmail='client2@client2.com')
+
+### Cancel Order - Action
+POST http://localhost:4004/manage-orders/cancelOrder 
+Content-Type: application/json
+
+{"clientEmail" : "client2@client2.com"}
+
+### Get Customer Rate - Function Bound
+GET http://localhost:4004/manage-orders/Orders('client1@client1.com')/ManageOrders.getClientTaxRate(clientEmail='client2@client2.com')
+
+### Cancel Order - Action Bound
+POST http://localhost:4004/manage-orders/Orders('client1@client1.com')/ManageOrders.cancelOrder 
+Content-Type: application/json
+
+{"clientEmail" : "client2@client2.com"}
+
+### Get Incidents
+GET http://localhost:4004/sapbackend-exit/Incidents

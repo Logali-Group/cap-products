@@ -1,0 +1,199 @@
+{
+  "meta": {
+    "creator": "cds-dk 4.7.2"
+  },
+  "$version": "2.0",
+  "definitions": {
+    "sapbackend": {
+      "kind": "service",
+      "@cds.external": true
+    },
+    "sapbackend.IncidentsSet": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "elements": {
+        "IncidenceId": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "@sap.unicode": "false",
+          "@sap.label": "Counter",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false"
+        },
+        "SapId": {
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "@sap.unicode": "false",
+          "@sap.label": "SapId",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false"
+        },
+        "EmployeeId": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "@sap.unicode": "false",
+          "@sap.label": "Dummy",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false"
+        },
+        "CreationDate": {
+          "type": "cds.Timestamp",
+          "@odata.type": "Edm.DateTime",
+          "@odata.precision": 7,
+          "@sap.unicode": "false",
+          "@sap.label": "Date",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false"
+        },
+        "CreationDateX": {
+          "type": "cds.Boolean",
+          "@sap.unicode": "false",
+          "@sap.label": "DateX",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
+        "Type": {
+          "type": "cds.String",
+          "length": 2,
+          "@sap.unicode": "false",
+          "@sap.label": "Version Number Component",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false"
+        },
+        "TypeX": {
+          "type": "cds.Boolean",
+          "@sap.unicode": "false",
+          "@sap.label": "TypeX",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
+        "Reason": {
+          "type": "cds.String",
+          "length": 200,
+          "@sap.unicode": "false",
+          "@sap.label": "Text",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false"
+        },
+        "ReasonX": {
+          "type": "cds.Boolean",
+          "@sap.unicode": "false",
+          "@sap.label": "ResonX",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        }
+      }
+    },
+    "sapbackend.SignatureSet": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "elements": {
+        "OrderId": {
+          "key": true,
+          "type": "cds.String",
+          "length": 6,
+          "@sap.unicode": "false",
+          "@sap.label": "Order ID",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false"
+        },
+        "SapId": {
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "@sap.unicode": "false",
+          "@sap.label": "Char",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false"
+        },
+        "EmployeeId": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "@sap.unicode": "false",
+          "@sap.label": "Dummy",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false"
+        },
+        "MediaContent": {
+          "type": "cds.LargeBinary",
+          "@sap.unicode": "false",
+          "@sap.label": "File Xstring",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
+        "MimeType": {
+          "type": "cds.String",
+          "length": 128,
+          "@sap.unicode": "false",
+          "@sap.label": "MIME type",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false"
+        }
+      }
+    },
+    "sapbackend.FilesSet": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@m.HasStream": "true",
+      "@sap.content.version": "1",
+      "elements": {
+        "AttId": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "@sap.unicode": "false",
+          "@sap.label": "Dummy",
+          "@sap.updatable": "false"
+        },
+        "OrderId": {
+          "key": true,
+          "type": "cds.String",
+          "length": 6,
+          "@sap.unicode": "false",
+          "@sap.label": "Order ID",
+          "@sap.updatable": "false"
+        },
+        "SapId": {
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "@sap.unicode": "false",
+          "@sap.label": "Char",
+          "@sap.updatable": "false"
+        },
+        "EmployeeId": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "@sap.unicode": "false",
+          "@sap.label": "Dummy",
+          "@sap.updatable": "false"
+        },
+        "FileName": {
+          "type": "cds.String",
+          "length": 80,
+          "@sap.unicode": "false",
+          "@sap.label": "Char80"
+        },
+        "MimeType": {
+          "type": "cds.String",
+          "length": 128,
+          "@sap.unicode": "false",
+          "@sap.label": "MIME type"
+        }
+      }
+    }
+  }
+}
